@@ -11,6 +11,15 @@ Sont concernés :
   - tmux.conf
 - Vim
   - vimrc  
+- OpenVPN
+  - script to autoconnect to oprnvpn : 
+  - Instructions :
+    sudo mkdir /opt/vpn
+    sudo mv script.sh /opt/vpn/auto_connect.sh
+    modify the third line with your VPN private IP (EX : 10.0.0.6)
+  - To lunch the script open it in tmux :
+    sudo bash /opt/vpn/auto_connect.sh
+
 Ces fichiers peuvent être installés pour l'utilisateur courant avec le script ~install.sh~ contenu dans le dépot.
 
 Remarque : point espace install.sh pour sourcer les aliases et les variables d'environnement dans le shell courant
