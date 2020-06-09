@@ -56,6 +56,9 @@ fi
 EOF
 fi
 
+echo "source "$HOME/.bashrc" " >> $HOME/.bash_profile
+
+cp auto_vpn.sh $HOME/auto_vpn.sh
 
 # Charger les aliases
 source ~/.bash_aliases
