@@ -59,7 +59,7 @@ fi
 echo "source "$HOME/.bashrc" " >> $HOME/.bash_profile
 
 cp auto_vpn.sh $HOME/auto_vpn.sh
-
+cp crontab_vpn.sh $HOME/crontab_vpn.sh
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # Charger les aliases
 source ~/.bash_aliases
