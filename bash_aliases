@@ -9,6 +9,8 @@ alias ec="TERM=xterm-256color emacsclient -a \"\" -t"
 alias l1="ls -1"
 alias ll="ls -lth"
 alias la="ls -al"
+alias ffrtsp="ffplay -fflags nobuffer -flags low_delay -framedrop -strict experimental -rtsp_transport tcp"
+alias ffrtspamazon="ffplay -fflags nobuffer -flags low_delay -framedrop -strict experimental -rtsp_transport tcp rtsp://user:phoenix321@10.0.0.65:8554/"
 alias gia='git add .'
 alias gib='git branch -vv'
 alias gic='git checkout'
