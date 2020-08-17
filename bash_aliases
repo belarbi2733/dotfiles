@@ -10,7 +10,6 @@ alias l1="ls -1"
 alias ll="ls -lth"
 alias la="ls -al"
 alias ffrtsp="ffplay -fflags nobuffer -flags low_delay -framedrop -strict experimental -rtsp_transport tcp"
-alias ffrtspamazon="ffplay -fflags nobuffer -flags low_delay -framedrop -strict experimental -rtsp_transport tcp rtsp://user:phoenix321@10.0.0.65:8554/"
 alias gia='git add .'
 alias gib='git branch -vv'
 alias gic='git checkout'
@@ -30,7 +29,9 @@ fi
 
 alias gill='git pull'
 alias gim='git commit'
+alias gims='git commit -m "update"'
 alias gip='git push'
+alias gipom='git push origin master'
 alias gis='git status'
 alias gid='git diff'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
@@ -44,6 +45,11 @@ alias dcp='docker-compose pull'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias dpa='docker ps -a'
+alias dsl='docker stop $(docker ps -aq --latest)'
+alias drl='docker rm $(docker ps -aq --latest)'
+alias dim='docker images'
+
 
 if [ $BASH_VERSION ]; then
 source ~/.git-completion.bash
