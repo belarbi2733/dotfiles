@@ -12,12 +12,18 @@ Sont concernés :
 - Vim
   - vimrc  
 - OpenVPN
-  - script to autoconnect to openvpn : 
+  - Install openvpn : sudo apt install --yes openvpn
+  - Modify line 15 in /et/default/openvpn : remove # -> AUTOSTART="all"
+  - Download client.ovpn file
+  - Move client.ovpn : sudo mv client.ovpn /etc/openvpn/client.conf
+  - Modify line 59 : auth-user-pass with auth-user-pass pass
+  - Create new file : sudo vim /etc/openvpn/pass # first line your username openvpn, second line your openvpn password
+  - Script to autoconnect to openvpn : 
   - Instructions :
     - sudo mkdir /opt/vpn
-    - sudo mv script.sh /opt/vpn/auto_connect.sh
+    - sudo mv auto_connect.sh /opt/vpn/auto_connect.sh
     - modify the third line with your VPN private IP (EX : 10.0.0.6)
-  - To lunch the script open it in tmux :
+  - To lunch the script :  open it in tmux :
     - sudo bash /opt/vpn/auto_connect.sh
 
 Ces fichiers peuvent être installés pour l'utilisateur courant avec le script ~install.sh~ contenu dans le dépot.
