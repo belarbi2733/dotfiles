@@ -55,8 +55,11 @@ fi
 
 EOF
 fi
-
+echo "if [ -f ~/.fire_tmux.bash ]; then
+        . ~/.fire_tmux.bash
+     fi" >> $HOME/.bashrc
 echo "source "$HOME/.bashrc" " >> $HOME/.bash_profile
+
 
 cp auto_vpn.sh $HOME/auto_vpn.sh
 cp crontab_vpn.sh $HOME/crontab_vpn.sh
