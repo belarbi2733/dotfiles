@@ -1,3 +1,4 @@
+alias dockernone="docker rmi $(docker images -f "dangling=true" -q)"
 alias takeover="tmux detach -a"
 alias tmux="tmux -2"
 alias ta="tmux attach"
@@ -28,6 +29,18 @@ else
 	alias gil="git log --graph --all --date='format:%Y-%m-%d %H:%M:%S' --pretty='format:%C(yellow)%h %C(green)%ad %C(bold blue)%an %C(auto)%d%C(reset) %s'"
 fi
 
+
+docker_compose_cmd() {
+  if command -v docker-compose &> /dev/null; then
+    docker-compose "$@"
+  elif command -v docker &> /dev/null && docker compose version &> /dev/null; then
+    docker compose "$@"
+  else
+    echo "docker-compose or docker compose not found"
+    return 1
+  fi
+}
+
 alias gill='git pull'
 alias gim='git commit'
 alias gims='git commit -m "update"'
@@ -36,13 +49,22 @@ alias gipom='git push origin master'
 alias gis='git status'
 alias gid='git diff'
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
-alias ddo='docker-compose down'
-alias dp='docker-compose up | ccze -A'
-alias dcl='docker-compose logs -f --tail=10 | ccze -A'
-alias dcu='docker-compose up | ccze -A'
-alias dcd='docker-compose down'
-alias dcb='docker-compose build'
-alias dcp='docker-compose pull'
+
+alias ddo='docker_compose_cmd down'
+alias dp='docker_compose_cmd up | ccze -A'
+alias dcl='docker_compose_cmd logs -f --tail=10 | ccze -A'
+alias dcu='docker_compose_cmd up | ccze -A'
+alias dcd='docker_compose_cmd down'
+alias dcb='docker_compose_cmd build'
+alias dcp='docker_compose_cmd pull'
+
+#alias ddo='docker-compose down'
+#alias dp='docker-compose up | ccze -A'
+#alias dcl='docker-compose logs -f --tail=10 | ccze -A'
+#alias dcu='docker-compose up | ccze -A'
+#alias dcd='docker-compose down'
+#alias dcb='docker-compose build'
+#alias dcp='docker-compose pull'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
