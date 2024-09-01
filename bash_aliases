@@ -1,3 +1,4 @@
+alias arbre="ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'"
 alias dockernone="docker rmi $(docker images -f "dangling=true" -q)"
 alias takeover="tmux detach -a"
 alias tmux="tmux -2"
@@ -41,6 +42,7 @@ docker_compose_cmd() {
   fi
 }
 
+alias gin='git remote set-url origin'
 alias gill='git pull'
 alias gim='git commit'
 alias gims='git commit -m "update"'
