@@ -30,7 +30,7 @@ Ces fichiers peuvent être installés pour l'utilisateur courant avec le script 
 
 Remarque : point espace install.sh pour sourcer les aliases et les variables d'environnement dans le shell courant
 #+BEGIN_SRC bash
-. install.sh
+./install.sh
 #+END_SRC
 * Elpy
 ~M-x elpy-config RET~ donne accès  à ~Elpy Configuration~,  un buffer
