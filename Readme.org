@@ -72,6 +72,10 @@ Package repository URLs have been added.
 - Window indexing starts at 1 instead of 0.
 - F1, F2, F3, F4 keys are used to switch to the corresponding window.
 
+#+CAPTION: Terminal Configuration
+#+NAME: fig:terminal
+[[./images/terminal.png]]
+
 ** Aliases 
 | Shortcut   | Command                | Description                                                    |
 |------------+------------------------+----------------------------------------------------------------|
