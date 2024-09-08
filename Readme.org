@@ -108,6 +108,7 @@ Package repository URLs have been added.
 | drl        | Removes last container | Removes the last stopped Docker container                      |
 | dim        | docker images          | Lists Docker images                                            |
 | ff         | Complex function       | Manages permissions of Odoo's filestore volume in Docker       |
+|------------+------------------------+----------------------------------------------------------------|
 
 ** Other Useful Shortcuts
 | Shortcut   | Tmux Command           | Description                                                    |
@@ -140,3 +141,24 @@ Package repository URLs have been added.
 | C-q M-Right| resize-pane -R 5       | enlarges the current pane to the right                         |
 | C-q M-Up   | resize-pane -U         | enlarges the current pane upwards                              |
 | C-q M-Down | resize-pane -D         | enlarges the current pane downwards                            |
+| C-q C-f    | command-prompt         | Prompts to find and switch to a session                        |
+| C-q M-b    | select-pane -L         | Selects the pane on the left                                   |
+| C-q M-f    | select-pane -R         | Selects the pane on the right                                  |
+| C-q +      | resize-pane -Z         | Maximizes the current pane                                     |
+| C-q H      | resize-pane -L 2       | Resizes the pane left by 2 units                               |
+| C-q J      | resize-pane -D 2       | Resizes the pane down by 2 units                               |
+| C-q K      | resize-pane -U 2       | Resizes the pane up by 2 units                                 |
+| C-q L      | resize-pane -R 2       | Resizes the pane right by 2 units                              |
+| C-q C-h    | previous-window        | Switches to the previous window                                |
+| C-q C-l    | next-window            | Switches to the next window                                    |
+| C-q A      | command-prompt         | Prompts to rename the current window                           |
+| C-q S      | command-prompt         | Prompts to rename the current session                          |
+| C-q Space  | last-pane              | Switches to the last active pane                               |
+| C-q BSpace | select-pane -t :.+     | Selects the next pane                                          |
+| S-Left     | swap-pane -t 0         | Swaps the current pane with the first pane                     |
+| F1         | previous-window        | Switches to the previous window                                |
+| F2         | next-window            | Switches to the next window                                    |
+| C-q m      | toggle mouse           | Toggles mouse mode                                             |
+| C-q Enter  | copy-mode              | Enters copy mode                                               |
+| C-q F      | run command            | Runs the Facebook PathPicker                                   |
+|------------+------------------------+----------------------------------------------------------------|
