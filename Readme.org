@@ -1,6 +1,6 @@
-* Environnement de la ligne de commande
-Ce dépot contient les fichiers de configuration nécessaires à l'établissement d'un environnement de base.
-Sont concernés :
+* Command Line Environment
+This repository contains configuration files necessary for setting up a basic environment.
+It includes:
 - Bash & Git
   - bash_aliases
   - git-completion.bash
@@ -12,38 +12,40 @@ Sont concernés :
 - Vim
   - vimrc  
 
-Ces fichiers peuvent être installés pour l'utilisateur courant avec le script ~install.sh~ contenu dans le dépot.
+These files can be installed for the current user using the ~install.sh~ script contained in the repository.
 
-Remarque : point espace install.sh pour sourcer les aliases et les variables d'environnement dans le shell courant
+Note: Use ". install.sh" to source the aliases and environment variables in the current shell
 #+BEGIN_SRC bash
 ./install.sh
 #+END_SRC
-* Elpy
-~M-x elpy-config RET~ donne accès  à ~Elpy Configuration~,  un buffer
-qui permet l'installation de  packages python supplémentaires que Elpy
-peut utiliser pour mieux vous aider.
 
-En appuyant sur ~[run]~ chaque package est installé avec l'option ~--user~.
-Les packages sont installés dans le dossier ~$HOME/.local/bin~.
-Elpy recommande d'ajouter  ce chemin dans la variable  ~PATH~ de votre
-shell. Ajoutez les lignes suivantes dans le fichier ~$HOME/.profile~
+* Elpy
+~M-x elpy-config RET~ provides access to ~Elpy Configuration~, a buffer
+that allows installation of additional Python packages that Elpy
+can use to better assist you.
+
+Pressing ~[run]~ installs each package with the ~--user~ option.
+Packages are installed in the ~$HOME/.local/bin~ folder.
+Elpy recommends adding this path to your shell's ~PATH~ variable.
+Add the following lines to your ~$HOME/.profile~ file:
 
 #+BEGIN_SRC sh
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 #+END_SRC
-Le dépôt contient une copie du fichier ~.profile~.
-Comme ci-dessous vous pouvez créer un lien symbolique vers ce fichier.
+The repository contains a copy of the ~.profile~ file.
+As shown below, you can create a symbolic link to this file.
 #+BEGIN_SRC sh
 cd
 rm .profile
 ln -s dotfiles/profile .profile
 source .profile
 #+END_SRC
-* Configuration de l'environnement de développement
-Le dépôt contient les fichiers de configrations de l'éditeur ~emacs~ et du multiplexeur ~tmux~.
-Le mieux pour faire fonctionner ces configurations est de créer des liens symboliques.
+
+* Development Environment Configuration
+The repository contains configuration files for the ~emacs~ editor and the ~tmux~ multiplexer.
+The best way to make these configurations work is to create symbolic links.
 #+BEGIN_SRC sh
 cd
 git clone git@git.phoenix-ai.com:mohammed/dotfiles.git
@@ -51,87 +53,90 @@ ln -s dotfiles/emacs.el .emacs.el
 ln -s dotfiles/emacs-custom.el .emacs-custom.el
 ln -s dotfiles/tmux.conf .tmux.conf
 #+END_SRC
+
 * Emacs
-Des url de dépôts de packages ont été ajoutés.
+Package repository URLs have been added.
 #+BEGIN_SRC emacs-lisp
 (setq package-archives
       (quote
        (("gnu" . "http://elpa.gnu.org/packages/")
 	("marmalade" . "http://marmalade-repo.org/packages/")
 	("melpa" . "http://melpa.milkbox.net/packages/")
-	;("autre depot" . "adresse")
+	;("other repository" . "address")
 	)))
 #+END_SRC
-* Tmux
-- Le prefix ~C-b~ par défaut a été modifié à ~C-q~ qui est plus accessible.
-- L'index des fenêtres commence à 1 au lieux de 0.
-- Les touches F1 F2 F3 F4 servent à basculer à la fenêtre correspondant.
-** Alias 
-| Raccourci | Commande                | Description                                                    |
-|-----------+-------------------------+----------------------------------------------------------------|
-| arbre     | ls -R avec formatage    | Affiche l'arborescence des répertoires                         |
-| dockernone| Supprime images docker  | Supprime les images docker "dangling"                          |
-| takeover  | tmux detach -a          | Détache toutes les autres sessions tmux                        |
-| ta        | tmux attach             | Attache à une session tmux existante                           |
-| tt        | tmux                    | Lance tmux                                                     |
-| ee        | emacs en mode terminal  | Lance Emacs en mode terminal                                   |
-| ec        | emacsclient             | Lance Emacs en mode client                                     |
-| l1        | ls -1                   | Liste les fichiers sur une colonne                             |
-| ll        | ls -lth                 | Liste détaillée triée par date de modification                 |
-| la        | ls -al                  | Liste détaillée incluant les fichiers cachés                   |
-| gia       | git add .               | Ajoute tous les fichiers modifiés au staging                   |
-| gib       | git branch -vv          | Affiche les branches avec plus de détails                      |
-| gic       | git checkout            | Change de branche                                              |
-| gil       | git log formaté         | Affiche l'historique Git de façon graphique et colorée         |
-| gin       | git remote set-url      | Change l'URL du dépôt distant                                  |
-| gill      | git pull                | Récupère et fusionne les changements distants                  |
-| gim       | git commit              | Crée un commit                                                 |
-| gims      | git commit -m "update"  | Crée un commit rapide avec le message "update"                 |
-| gip       | git push                | Pousse les changements vers le dépôt distant                   |
-| gis       | git status              | Affiche l'état du dépôt                                        |
-| gid       | git diff                | Affiche les différences                                        |
-| myip      | Affiche IP publique     | Affiche l'adresse IP publique                                  |
-| ddo       | docker-compose down     | Arrête les conteneurs docker-compose                           |
-| dp        | docker-compose up       | Lance les conteneurs docker-compose avec coloration            |
-| dcl       | docker-compose logs     | Affiche les logs docker-compose avec coloration                |
-| dcu       | docker-compose up       | Lance les conteneurs docker-compose avec coloration            |
-| dcd       | docker-compose down     | Arrête les conteneurs docker-compose                           |
-| dcb       | docker-compose build    | Construit les images docker-compose                            |
-| dcp       | docker-compose pull     | Récupère les images docker-compose                             |
-| dpa       | docker ps -a            | Liste tous les conteneurs Docker                               |
-| dsl       | Arrête dernier conteneur| Arrête le dernier conteneur Docker lancé                       |
-| drl       | Supprime dernier cont.  | Supprime le dernier conteneur Docker arrêté                    |
-| dim       | docker images           | Liste les images Docker                                        |
-| ff        | Fonction complexe       | Gère les permissions du volume filestore d'Odoo dans Docker    |
 
-** Autres raccourcis utiles
-| Raccourci   | Tmux commande          | Descriptif                                                             |
-|-------------+------------------------+------------------------------------------------------------------------|
-| C-q ?       | list-keys              | affiche l'aide                                                         |
-| C-q c       | new-window             | nouvelle fenêtre                                                       |
-| C-q d       | detach-client          | se détache de tmux mais le laisse rouler                               |
-| C-q /       | split-window -v        | coupe la fenêtre ou le pane courant en 2 verticalement                 |
-| C-q i       | split-window -h        | coupe la fenêtre ou le pane courant en 2 horizontalement               |
-|-------------+------------------------+------------------------------------------------------------------------|
-| C-q Tab     | copy-mode              | entre dans un mode qui permet de remonter dans la sortie du terminal   |
-| C-q y       | paste-buffer           | colle ce qui a été copié pendant le copy-mode                          |
-|-------------+------------------------+------------------------------------------------------------------------|
-| M-Up        | select-pane -U         | déplace le curseur vers le panneau du haut                             |
-| M-Down      | select-pane -D         | déplace le curseur vers le panneau du bas                              |
-| M-Left      | select-pane -L         | déplace le curseur vers le panneau de gauche                           |
-| M-Right     | select-pane -R         | déplace le curseur vers le panneau de droite                           |
-| C-q Up      | select-pane -U         | idem mais en utilisant le préfix et sans le META                       |
-| C-q Down    | select-pane -D         |                                                                        |
-| C-q Left    | select-pane -L         |                                                                        |
-| C-q Right   | select-pane -R         |                                                                        |
-|-------------+------------------------+------------------------------------------------------------------------|
-| C-q b       | choose-window          | liste les fenêtres actives et permet de se déplacer dans l'une d'elles |
-| C-q o       | select-pane -t :.+     | déplace le curseur dans le panneau suivant                             |
-| C-q z       | resize-pane -Z         | zoom le panneau courant                                                |
-| C-q M-o     | rotate-window -D       | inverse les panneaux                                                   |
-| C-q R       | source-file .tmux.conf | Recharge le fichier de configuration sans quitter tmux                 |
-|-------------+------------------------+------------------------------------------------------------------------|
-| C-q M-Left  | resize-pane -L 5       | agrandit le panneau courant vers la gauche                             |
-| C-q M-Right | resize-pane -R 5       | agrandit le panneau courant vers la droite                             |
-| C-q M-Up    | resize-pane -U         | agrandit le panneau courant vers la haut                               |
-| C-q M-Down  | resize-pane -D         | agrandit le panneau courant vers la bas                                |
+* Tmux
+- The default prefix ~C-b~ has been changed to ~C-q~ which is more accessible.
+- Window indexing starts at 1 instead of 0.
+- F1, F2, F3, F4 keys are used to switch to the corresponding window.
+
+** Aliases 
+| Shortcut   | Command                | Description                                                    |
+|------------+------------------------+----------------------------------------------------------------|
+| arbre      | ls -R with formatting  | Displays directory tree structure                              |
+| dockernone | Remove docker images   | Removes "dangling" docker images                               |
+| takeover   | tmux detach -a         | Detaches all other tmux sessions                               |
+| ta         | tmux attach            | Attaches to an existing tmux session                           |
+| tt         | tmux                   | Launches tmux                                                  |
+| ee         | emacs in terminal mode | Launches Emacs in terminal mode                                |
+| ec         | emacsclient            | Launches Emacs in client mode                                  |
+| l1         | ls -1                  | Lists files in a single column                                 |
+| ll         | ls -lth                | Detailed list sorted by modification date                      |
+| la         | ls -al                 | Detailed list including hidden files                           |
+| gia        | git add .              | Adds all modified files to staging                             |
+| gib        | git branch -vv         | Displays branches with more details                            |
+| gic        | git checkout           | Changes branch                                                 |
+| gil        | formatted git log      | Displays Git history in a graphical and colored way            |
+| gin        | git remote set-url     | Changes the URL of the remote repository                       |
+| gill       | git pull               | Fetches and merges remote changes                              |
+| gim        | git commit             | Creates a commit                                               |
+| gims       | git commit -m "update" | Creates a quick commit with the message "update"               |
+| gip        | git push               | Pushes changes to the remote repository                        |
+| gis        | git status             | Displays the repository status                                 |
+| gid        | git diff               | Displays differences                                           |
+| myip       | Shows public IP        | Displays the public IP address                                 |
+| ddo        | docker-compose down    | Stops docker-compose containers                                |
+| dp         | docker-compose up      | Launches docker-compose containers with coloring               |
+| dcl        | docker-compose logs    | Displays docker-compose logs with coloring                     |
+| dcu        | docker-compose up      | Launches docker-compose containers with coloring               |
+| dcd        | docker-compose down    | Stops docker-compose containers                                |
+| dcb        | docker-compose build   | Builds docker-compose images                                   |
+| dcp        | docker-compose pull    | Pulls docker-compose images                                    |
+| dpa        | docker ps -a           | Lists all Docker containers                                    |
+| dsl        | Stops last container   | Stops the last launched Docker container                       |
+| drl        | Removes last container | Removes the last stopped Docker container                      |
+| dim        | docker images          | Lists Docker images                                            |
+| ff         | Complex function       | Manages permissions of Odoo's filestore volume in Docker       |
+
+** Other Useful Shortcuts
+| Shortcut   | Tmux Command           | Description                                                    |
+|------------+------------------------+----------------------------------------------------------------|
+| C-q ?      | list-keys              | displays help                                                  |
+| C-q c      | new-window             | new window                                                     |
+| C-q d      | detach-client          | detaches from tmux but leaves it running                       |
+| C-q /      | split-window -v        | splits the current window or pane vertically                   |
+| C-q i      | split-window -h        | splits the current window or pane horizontally                 |
+|------------+------------------------+----------------------------------------------------------------|
+| C-q Tab    | copy-mode              | enters a mode that allows scrolling up in the terminal output  |
+| C-q y      | paste-buffer           | pastes what was copied during copy-mode                        |
+|------------+------------------------+----------------------------------------------------------------|
+| M-Up       | select-pane -U         | moves the cursor to the pane above                             |
+| M-Down     | select-pane -D         | moves the cursor to the pane below                             |
+| M-Left     | select-pane -L         | moves the cursor to the left pane                              |
+| M-Right    | select-pane -R         | moves the cursor to the right pane                             |
+| C-q Up     | select-pane -U         | same but using the prefix and without META                     |
+| C-q Down   | select-pane -D         |                                                                |
+| C-q Left   | select-pane -L         |                                                                |
+| C-q Right  | select-pane -R         |                                                                |
+|------------+------------------------+----------------------------------------------------------------|
+| C-q b      | choose-window          | lists active windows and allows moving to one of them          |
+| C-q o      | select-pane -t :.+     | moves the cursor to the next pane                              |
+| C-q z      | resize-pane -Z         | zooms the current pane                                         |
+| C-q M-o    | rotate-window -D       | reverses the panes                                             |
+| C-q R      | source-file .tmux.conf | Reloads the configuration file without quitting tmux           |
+|------------+------------------------+----------------------------------------------------------------|
+| C-q M-Left | resize-pane -L 5       | enlarges the current pane to the left                          |
+| C-q M-Right| resize-pane -R 5       | enlarges the current pane to the right                         |
+| C-q M-Up   | resize-pane -U         | enlarges the current pane upwards                              |
+| C-q M-Down | resize-pane -D         | enlarges the current pane downwards                            |
