@@ -66,6 +66,44 @@ Des url de dépôts de packages ont été ajoutés.
 - Le prefix ~C-b~ par défaut a été modifié à ~C-q~ qui est plus accessible.
 - L'index des fenêtres commence à 1 au lieux de 0.
 - Les touches F1 F2 F3 F4 servent à basculer à la fenêtre correspondant.
+** Alias 
+| Raccourci | Commande                | Description                                                    |
+|-----------+-------------------------+----------------------------------------------------------------|
+| arbre     | ls -R avec formatage    | Affiche l'arborescence des répertoires                         |
+| dockernone| Supprime images docker  | Supprime les images docker "dangling"                          |
+| takeover  | tmux detach -a          | Détache toutes les autres sessions tmux                        |
+| ta        | tmux attach             | Attache à une session tmux existante                           |
+| tt        | tmux                    | Lance tmux                                                     |
+| ee        | emacs en mode terminal  | Lance Emacs en mode terminal                                   |
+| ec        | emacsclient             | Lance Emacs en mode client                                     |
+| l1        | ls -1                   | Liste les fichiers sur une colonne                             |
+| ll        | ls -lth                 | Liste détaillée triée par date de modification                 |
+| la        | ls -al                  | Liste détaillée incluant les fichiers cachés                   |
+| gia       | git add .               | Ajoute tous les fichiers modifiés au staging                   |
+| gib       | git branch -vv          | Affiche les branches avec plus de détails                      |
+| gic       | git checkout            | Change de branche                                              |
+| gil       | git log formaté         | Affiche l'historique Git de façon graphique et colorée         |
+| gin       | git remote set-url      | Change l'URL du dépôt distant                                  |
+| gill      | git pull                | Récupère et fusionne les changements distants                  |
+| gim       | git commit              | Crée un commit                                                 |
+| gims      | git commit -m "update"  | Crée un commit rapide avec le message "update"                 |
+| gip       | git push                | Pousse les changements vers le dépôt distant                   |
+| gis       | git status              | Affiche l'état du dépôt                                        |
+| gid       | git diff                | Affiche les différences                                        |
+| myip      | Affiche IP publique     | Affiche l'adresse IP publique                                  |
+| ddo       | docker-compose down     | Arrête les conteneurs docker-compose                           |
+| dp        | docker-compose up       | Lance les conteneurs docker-compose avec coloration            |
+| dcl       | docker-compose logs     | Affiche les logs docker-compose avec coloration                |
+| dcu       | docker-compose up       | Lance les conteneurs docker-compose avec coloration            |
+| dcd       | docker-compose down     | Arrête les conteneurs docker-compose                           |
+| dcb       | docker-compose build    | Construit les images docker-compose                            |
+| dcp       | docker-compose pull     | Récupère les images docker-compose                             |
+| dpa       | docker ps -a            | Liste tous les conteneurs Docker                               |
+| dsl       | Arrête dernier conteneur| Arrête le dernier conteneur Docker lancé                       |
+| drl       | Supprime dernier cont.  | Supprime le dernier conteneur Docker arrêté                    |
+| dim       | docker images           | Liste les images Docker                                        |
+| ff        | Fonction complexe       | Gère les permissions du volume filestore d'Odoo dans Docker    |
+
 ** Autres raccourcis utiles
 | Raccourci   | Tmux commande          | Descriptif                                                             |
 |-------------+------------------------+------------------------------------------------------------------------|
