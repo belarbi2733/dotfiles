@@ -3,20 +3,20 @@
 current_dir=$PWD;
 homeconfig="$(ls -F | grep -v / | egrep -iv \(bin\|install\|readme\|profile\))";
 
-# Crée un lien symbolique des fichiers de configuration vers le
-# contenu de ce dossier
+# Create symbolic links for configuration files to the
+# content of this folder
 
 for fichier in $homeconfig; do
     if [ ! -f $HOME/.$fichier ] ; then
 	ln -s $current_dir/$fichier $HOME/.$fichier
-	echo "~/.$fichier a été créé"
+	echo "~/.$fichier has been created"
     else
-	echo "~/.$fichier exist déjà"
+	echo "~/.$fichier already exists"
     fi
 done
 
-# S'assure que le fichier $HOME/.profile n'est pas un lien
-# Si oui le remplacer par le template système
+# Make sure the $HOME/.profile file is not a symlink
+# If it is, replace it with the system template
 
 if [ -h $HOME/.profile ];then
     rm $HOME/.profile;
@@ -25,17 +25,17 @@ fi
 
 
 
-# Le dossier $HOME/.local/bin est utilisé par python-pip
-# S'assurer qu'il est dans la variable PATH
+# The $HOME/.local/bin folder is used by python-pip
+# Ensure it is in the PATH variable
 
 if `grep "HOME/.local/bin" $HOME/.profile >/dev/null 2>&1`; then
-    echo "$HOME/.local/bin est déjà dans le path";
+    echo "$HOME/.local/bin is already in the path";
 else
     if [ ! -d $HOME/.local/bin ]; then
-	echo "Création et ajout de ~/.local/bin dans le path";
+	echo "Creating and adding ~/.local/bin to the path";
 	mkdir -p $HOME/.local/bin ;
     else
-	echo "Le dossier ~/.local/bin existe déjà. Il va être ajouté au path";
+	echo "The ~/.local/bin folder already exists. It will be added to the path";
     fi
     cat >> $HOME/.profile <<'EOF'
 
@@ -62,9 +62,9 @@ echo "source "$HOME/.bashrc" " >> $HOME/.bash_profile
 
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-# Charger les aliases
+# Load aliases
 source ~/.bash_aliases
 
-# Créer un template dir pour les hooks de git
+# Create a template dir for git hooks
 
 git config --global init.templateDir $current_dir/gitemplates
