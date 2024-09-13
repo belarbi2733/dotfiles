@@ -284,8 +284,9 @@ set -g @sysstat_gpu_color_medium "$color_level_warn"
 set -g @sysstat_gpu_color_stress "$color_level_stress"
 
 
-tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} "
-tmux_conf_theme_status_right="#{prefix}#{mouse}#{pairing}#{synchronized}  #(curl -m 1 wttr.in/?format=3 2>/dev/null) , %R , %d %b |#[fg=#{cpu_color}]CPU: #(vmstat 1 2 | tail -1 | awk '{print 100-$15}')% #[default] |#[fg=#{ram_color}]RAM: #(free | grep Mem | awk '{print int($3/$2 * 100.0)}')% #[default] |#[fg=#{gpu_color} ] GPU: #(~/.get_gpu_usage.sh)% #[default] #(~/.check_battery.sh) | #{username}#{root} | #{hostname}"
+tmux_conf_theme_status_left=" ❐ #S | ↑#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m, #{uptime_m}m,} | #(~/.monitor_ssh.sh) "
+
+tmux_conf_theme_status_right="#{prefix}#{mouse}#{pairing}#{synchronized}  #(curl -m 1 wttr.in/?format=3 2>/dev/null) , %R , %d %b |#[fg=#{cpu_color}]CPU: #(vmstat 1 2 | tail -1 | awk '{print 100-$15}')% #[default] |#[fg=#{ram_color}]RAM: #(free | grep Mem | awk '{print int($3/$2 * 100.0)}')% #[default] |#[fg=#{gpu_color} ] GPU: #(~/.get_gpu_usage.sh) #[default] #(~/.check_battery.sh) | #{username}#{root} | #{hostname}"
 
 #tmux_conf_theme_status_right="#{prefix}#{mouse}#{pairing}#{synchronized} #(curl -m 1 wttr.in/?format=3 2>/dev/null) , %R , %d %b  | CPU: #(vmstat 1 2 | tail -1 | awk '{print 100-$15}')% | RAM: #(free | grep Mem | awk '{print int($3/$2 * 100.0)}')% | GPU: #(./.get_gpu_usage.sh)% | #{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} | #{username}#{root} | #{hostname}"
 
