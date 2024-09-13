@@ -1,4 +1,7 @@
-tore the previous count of SSH connections
+#!/bin/bash
+
+
+#store the previous count of SSH connections
 SSH_CONNECTIONS_FILE="/tmp/ssh_connections_count"
 
 # Function to get current SSH connections (excluding tmux sessions)
