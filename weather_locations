@@ -1,0 +1,16 @@
+# Weather & timezone location config
+# Format: IP_PREFIX=CityName|Timezone
+# The SSH client IP is matched against these prefixes (longest match wins)
+# You can use partial IPs for subnet matching
+#
+# Examples:
+#   192.168.1=Villejuif|Europe/Paris
+#   10.0.0=Mons|Europe/Brussels
+#   100.69.68=Mons|Europe/Brussels
+#
+# Default city (used when no IP matches):
+DEFAULT=Paris|Europe/Paris
+
+# Add your mappings below:
+100.69.68=Mons|Europe/Brussels
+192.168.1=Villejuif|Europe/Paris

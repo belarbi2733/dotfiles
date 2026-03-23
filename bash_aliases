@@ -175,3 +175,4 @@ function ff() {
 	fi
     fi
 }
+alias clauded="claude --dangerously-skip-permissions"
